@@ -1,0 +1,107 @@
+<div class="square jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-3">Calculadora</h1>
+        <p class="lead">Interés simple y compuesto</p>
+    </div>
+</div>
+
+
+<div class="container">
+    <!-- <div class="form-control"> -->
+    <div class="form-group">
+        <legend>Tipo de cálculo</legend>
+        <br>
+        <select [(ngModel)]="TipoCalculo" class="form-control" (change)="change()">
+          <option value="ValorFuturo">Valor Futuro</option>
+          <option value="ValorPresente">Valor Presente</option>
+          <option value="ValorInteres">Valor Intereses</option>
+          <option value="ValorPeriodo">Valor Periodo</option>
+         <!-- <option value="TasaInteres">Tasa Interes</option> -->
+        </select>
+    </div>
+
+    <div class="form-group" [hidden]="!showField.Monto">
+
+        <div class="input-group">
+            <span class="input-group-addon success">$</span>
+            <input type="number" [(ngModel)]="CamposSimulador.Monto" class="form-control" placeholder="Monto Solicitado" [required]="showField.Monto">
+        </div>
+    </div>
+
+    <div class="form-group" [hidden]="!showField.Tasa">
+        <label class="form-control-label">Tasa Interes</label>
+        <div class="input-group">
+            <span class="input-group-addon success">%</span>
+            <input type="number" [(ngModel)]="CamposSimulador.Tasa" class="form-control" placeholder="Tasa Interes" [required]="showField.Tasa">
+        </div>
+    </div>
+
+    <div class="form-group" [hidden]="!showField.Periodo">
+        <label>Periodo</label>
+        <div class="input-group">
+            <span class="input-group-addon success">#</span>
+            <input type="number" [(ngModel)]="CamposSimulador.Periodo" class="form-control" placeholder="Periodo" [required]="showField.Periodo">
+        </div>
+    </div>
+
+    <div class="form-group" [hidden]="!showField.ValorFuturo">
+        <label>Valor Futuro</label>
+        <div class="input-group">
+            <span class="input-group-addon success">$</span>
+            <input type="number" [(ngModel)]="CamposSimulador.ValorFuturo" class="form-control" placeholder="Valor Futuro" [required]="showField.ValorFuturo">
+        </div>
+    </div>
+
+    <div class="form-group" [hidden]="!showField.ValorPresente">
+        <label>Valor Presente</label>
+        <div class="input-group">
+            <span class="input-group-addon success">$</span>
+            <input type="number" [(ngModel)]="CamposSimulador.ValorPresente" class="form-control" placeholder="Valor Presente" [required]="showField.ValorPresente">
+        </div>
+    </div>
+    <div class="row" [hidden]="!TipoCalculo">
+        <div class="col-12 text-center">
+            <button class="btn btn-primary text-center" (click)="Calcular()" type="button">Calcular</button>
+        </div>
+    </div>
+    <br>
+
+
+    <!-- [hidden]="!showField.Results" -->
+    <div class="row">
+
+
+        <div class="col-6 col-lg-3 text-center">
+            <div class="card">
+                <div class="card-block p-0 clearfix">
+                    <i class="fa p-1 font-2xl mr-1 float-left" [ngClass]="ResultadoCompuesto.class"></i>
+                    <div class="h5 text-primary mb-0 mt-h" [ngClass]="ResultadoCompuesto.textColor">{{ResultadoSimple.value}}</div>
+                    <div class="text-muted text-uppercase font-weight-bold font-xs">Interes Simple</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-lg-3 text-center">
+            <div class="card">
+                <div class="card-block p-0 clearfix">
+                    <i class="fa p-1 font-2xl mr-1 float-left" [ngClass]="ResultadoCompuesto.class"></i>
+                    <div class="h5 text-primary mb-0 mt-h" [ngClass]="ResultadoCompuesto.textColor">{{ResultadoCompuesto.value}}</div>
+                    <div class="text-muted text-uppercase font-weight-bold font-xs">Interes Compuesto</div>
+                </div>
+            </div>
+        </div>
+
+
+        <!--  <div class="col-xxxl-3 col-md-6">
+            <ngx-status-card title="Interes Simple" desc="{{ResultadoSimple.value}}" type="{{ResultadoSimple.color}}">
+              <i class="{{ResultadoSimple.icon}}"></i>
+            </ngx-status-card>
+          </div>
+          <div class="col-xxxl-3 col-md-6">
+              <ngx-status-card title="Interes Compuesto" desc="{{ResultadoCompuesto.value}}" type="{{ResultadoCompuesto.color}}">
+                <i class="{{ResultadoCompuesto.icon}}"></i>
+              </ngx-status-card>
+          </div>  -->
+    </div>
+
+    <!-- </div> -->
+</div>

@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+
+body {
+    background-color: #d5d5d5;
+}
+
+.square {
+    background-color: #6d7993;
+}
+
+.btn-primary {
+    background-color: #6d7993;
+    border-color: #96858F;
+}
